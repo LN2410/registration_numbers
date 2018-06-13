@@ -52,7 +52,7 @@
     <label for="">Registration No.:<label>
   </div>
   <div class "eight columns">
-    <input type="text" name="" value="" placeholder="" class="userName" onkeydown="Check(this);" onkeyup="Check(this);">
+    <input type="text" name="" value="" placeholder="" class="regtext" onkeydown="Check(this);" onkeyup="Check(this);">
     <script>
       function Check(me) {
         me.value = me.value.replace(/[0-9]/g, "");
@@ -63,25 +63,23 @@
 </div>
 <div class="body">
 <div class="row">
-  <div class="six columns">
+  <!-- <div class="six columns">
     <input type="radio" name="languages" class="languageRadio" value="isiXhosa">
     <span class="label-body">Limpopo</span>
     <input type="radio" name="languages" class="languageRadio" value="english">
     <span class="label-body">Cape Town</span>
     <input type="radio" name="languages" class="languageRadio" value="afrikaans">
     <span class="label-body">Gauteng</span>
-  </div>
+  </div> -->
   <div class="six columns">
-    <ul>
-      <li style="float:left" class="dropdown">
-      <a href="#City" class="dropbtn">City</a>
-      <div class="dropdown-content">
-        <a href="" target="_blank"></a>
-        <a href="" target="_blank"></a>
-        <a href="" target="_blank"></a>
-      </div>
-      </li>
-    </ul>
+    <label for="Town: "></label>
+          <select class="DropSelector" name="selectCity">
+            <option class="DropSelector" value="All ">Cities</option>
+            <option class="DropSelector" value="CA ">Cape Town</option>
+            <option class="DropSelector" value="L ">Limpopo</option>
+            <option class="DropSelector" value="GP ">Gauteng</option>
+
+          </select>
   </div>
 </div>
 <div class="row">
@@ -89,7 +87,7 @@
       <button class="addingBtn" value="Greet!">Add</button>
   </div>
   <div class="six columns">
-    <button class="showBtn" value="reset!">Show</button>
+    <button class="resetBtn" value="reset!">Clear</button>
   </div>
 </div>
 </div>
