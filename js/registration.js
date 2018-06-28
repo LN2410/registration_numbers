@@ -3,7 +3,6 @@ function registrationF(stored){
   var regNumber = '';
   var city = stored || {};
 
-
   function addRegNum(reg){
    var regNumbers = [ 'CA ', 'GP ', 'L ']
 
@@ -26,19 +25,19 @@ function registrationF(stored){
     function theTown(cities){
     var regNum = Object.keys(city);
 
-    if (town === "Filter ") {
+    if (cities === "Filter ") {
    var empty = regNum.clear();
      return empty;
   }
-      if (town === "All ") {
+      if (cities === "All ") {
       return regNum;
      }
 
   var cityFilter = regNum.filter(function(Number, storedNum){
 
-      return Number.startsWith(town)
+      return Number.startsWith(cities)
     });
-    location.hash = city;
+    location.hash = cities;
 
     return cityFilter;
   }
