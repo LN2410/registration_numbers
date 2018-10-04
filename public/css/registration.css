@@ -1,0 +1,16 @@
+* {
+  margin: auto;
+  width: auto;
+}
+.registr{
+    background-color: darkviolet;
+    margin-top: 5%;
+}
+
+h2 {
+  font: italic small-caps bold 14px/22px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 2%;
+}
+
