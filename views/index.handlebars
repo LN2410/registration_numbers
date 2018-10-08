@@ -2,6 +2,7 @@
     <div class="row registr">
     <div class="twelve columns">
       <h2>The Registration App</h2>
+      <!-- <img src="images/plates.png" alt=""> -->
     </div>
     </div>
 <br>
@@ -11,13 +12,13 @@
         <input type="text" class="userName" name="name" placeholder="enter registration number" value="{{enterInput}}" onkeydown="Check(this);" onkeyup="Check(this);">
         <script>
           function Check(me) {
-            me.value = me.value.replace(/[0-9]/g, "");
+            me.value = me.value.replace(g, "");
           }
         </script>
       </div>
-      
+
       <div class="six columns">
-        City: 
+        City:
         <select>
           <option value="volvo">Cape Town</option>
           <option value="saab">Johannesburg</option>
@@ -26,5 +27,10 @@
         </select>
       </div>
     </div>
+    <div class="row">
+      <div class="twelve columns">
+        <button class="addbtn" id="addbtn" type="submit" name="addReg" value="{{added}}">Add Reg</button>
+        <button class="resetbtn" id="resetbtn" type="submit" name="rmReg" value="{{delete}}">Remove Reg</button>
+      </div>
+    </div>
   </div>
-

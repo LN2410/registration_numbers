@@ -3,9 +3,12 @@
   width: auto;
 }
 .registr{
-    background-color: darkviolet;
+    background-color: #f4b942;
     margin-top: 5%;
 }
+/* .registr img{
+  padding-left: 50%;
+} */
 
 h2 {
   font: italic small-caps bold 14px/22px "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -13,4 +16,9 @@ h2 {
   text-align: center;
   padding-top: 2%;
 }
-
+.addbtn{
+  background-color: #f4b942;
+}
+.resetbtn{
+  background-color: #f4b942;
+}

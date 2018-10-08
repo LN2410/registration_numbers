@@ -8,6 +8,9 @@ const app = express();
 
 const flash = require('express-flash');
 
+//instance
+let registr = registrationF
+
 //handlebars
 app.engine('handlebars', exphbs({
   defaultLayout: 'main'
@@ -29,6 +32,14 @@ app.get('/', async (req, res) => {
   } catch (err) {
     console.error("Does not open home",err);
   };
+});
+app.get('/added', async (req,res) => {
+  let showReg = await registr.addRegNum();
+  try {
+    res.render('index', showReg)
+  } catch (err) {
+    console.log("Does not display reg number", err);
+  }
 });
 
 const PORT = process.env.PORT || 3020;

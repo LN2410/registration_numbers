@@ -1,5 +1,5 @@
 
-function registrationF(stored){
+module.exports = function registrationF(stored){
   var regNumber = '';
   var city = stored || {};
 
