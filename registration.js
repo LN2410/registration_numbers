@@ -1,7 +1,7 @@
 module.exports = function Registration(pool){
 
     async function checkRegistration(reg) {
-        // 
+        // dd
         if(result.rows.length === 1){
         let result = await pool.query('select * from town where reg_start = $1', [reg]);
         } else{
