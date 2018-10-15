@@ -1,55 +1,25 @@
+module.exports = function Registration(pool){
 
-module.exports = function registrationF(stored){
-  var regNumber = '';
-  var city = stored || {};
+    async function checkRegistration(reg) {
+        // 
+        if(result.rows.length === 1){
+        let result = await pool.query('select * from town where reg_start = $1', [reg]);
+        } else{
 
-  function addRegNum(reg){
-   var regNumbers = [ 'CA ', 'GP ', 'L ']
-
-    if (reg !== ''){
-      if (city[reg] === undefined) {
-        for (var i = 0; i < regNumbers.length; i++) {
-          if (reg.startsWith(regNumbers[i])) {
-            city[reg] = 0;
-            return true;
-          }
+            // ...
+            req.flash('info', 'Please enter a valid registration number');
         }
-      }
-      return false;
     }
-  }
 
-  function returnsRegNum(){
-    return regNumber;
-  }
-    function theTown(cities){
-    var regNum = Object.keys(city);
+    async function getTown() {
+        let result = await pool.query('select * from town');
+        return result.rows;
+    }
 
-    if (cities === "Filter ") {
-   var empty = regNum.clear();
-     return empty;
-  }
-      if (cities === "All ") {
-      return regNum;
-     }
 
-  var cityFilter = regNum.filter(function(Number, storedNum){
-
-      return Number.startsWith(cities)
-    });
-    location.hash = cities;
-
-    return cityFilter;
-  }
-  function retunMap() {
-    return city;
-  }
-
- return {
-    addRegNum,
-    returnsRegNum,
-    theTown,
-    retunMap,
-
-  }
+    return {
+        checkRegistration,
+        getTown
+        
+    }
 }

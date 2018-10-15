@@ -1,5 +1,5 @@
 let express = require('express');
-let Registration = require('./registration');
+let registration = require('../registration');
 
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
@@ -8,8 +8,18 @@ const app = express();
 
 const flash = require('express-flash');
 
-//instance
-let registr = registrationF
+let useSSL = false;
+
+let local = process.env.LOCAL || false;
+if (process.env.DATABASE_URL && !local) {
+    useSSL = true;
+}
+
+const connectionString = process.env.DATABASE_URL || 'postgresql://coder:pg123@localhost:5432/registration';
+
+const pool = new Pool({
+    connectionString,
+  });
 
 //handlebars
 app.engine('handlebars', exphbs({
@@ -26,21 +36,6 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-app.get('/', async (req, res) => {
-  try {
-    res.render('index')
-  } catch (err) {
-    console.error("Does not open home",err);
-  };
-});
-app.get('/added', async (req,res) => {
-  let showReg = await registr.addRegNum();
-  try {
-    res.render('index', showReg)
-  } catch (err) {
-    console.log("Does not display reg number", err);
-  }
-});
 
 const PORT = process.env.PORT || 3020;
 

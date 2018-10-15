@@ -22,7 +22,8 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "node": "^10.11.0",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "pg": "^7.5.0"
   },
   "devDependencies": {},
   "description": ""
