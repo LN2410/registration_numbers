@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS Town;
+DROP TABLE IF EXISTS reg_numbers;
 
 CREATE TABLE town(
     id serial primary key,
