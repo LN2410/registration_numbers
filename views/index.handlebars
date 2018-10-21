@@ -6,36 +6,62 @@
     </div>
     </div>
 <br>
-    <div class="row">
-      <div class="six columns">
-         Reg Number :
-        <input type="text" class="userName" name="name" placeholder="enter registration number" value="{{enterInput}}" onkeydown="Check(this);" onkeyup="Check(this);">
-        <script>
-          function Check(me) {
-            me.value = me.value.replace(g, "");
-          }
-        </script>
+    <form class="" action="registration" method="post">
+      <div class="row">
+        <div class="six columns">
+           Reg Number :
+          <input type="text" class="enterReg" name="enterReg" placeholder="enter registration number" onkeydown="Check(this);" onkeyup="Check(this);">
+          <script>
+            function Check(me) {
+              me.value = me.value.replace(g, "");
+            }
+          </script>
+        </div>
+    </form>
+
+    <div class="message" style="color: #c0392b; font-size: 16px; font-weight: 300; text-align: center; margin-bottom: 10px">
+        <div class="row">
+          <div class="twelve columns error">
+            {{#if messages.error}}
+            <h6> {{messages.error}} </h6>
+            {{/if}}
+          </div>
+          <div class="success">
+            {{#if messages.success}}
+            <h6> {{messages.success}} </h6>
+            {{/if }}
+
+          </div>
+        </div>
       </div>
 
-      <div class="six columns">
-        City:
-        <select>
-          <option value="volvo">Cape Town</option>
-          <option value="saab">Johannesburg</option>
-          <option value="opel">Durban</option>
-          <option value="audi">Bisho</option>
-        </select>
-      </div>
+<form action="/townSelect" method="post">
+  <div class="six columns dropDown">
+    City:
+    <select onchange="submit()" class="allTowns" name="townNames">
+      <option>Select a Town</option>
+      <option name="townNames" value="allTown">All Towns</option>
+      {{#each townSelected}}
+      <option value="{{reg_start}}" name="townNames" {{selected}}>{{town_name}}</option>
+      {{/each }}
+    </select>
+  </div>
+</form>
     </div>
-    <div class="row">
-      <div class="twelve columns">
-        <button class="addbtn" id="addbtn" type="submit" name="addReg" value="{{added}}">Add Reg</button>
-        <button class="resetbtn" id="resetbtn" type="submit" name="rmReg" value="{{delete}}">Remove Reg</button>
+    <form class="" action="/added" method="post">
+      <div class="row">
+        <div class="twelve columns">
+          <button class="addbtn" type="submit" name="addReg">Add Reg</button>
+          <a href="/delete" class="resetbtn" >Reset</a>
+        </div>
       </div>
-    </div>
+    </form>
 
-    <div class="row">
-      <div class="twelve columns"></div>
-      <div class="displayReg">{{#if messages.info}}{{messages.info}}{{/if}}</div>
+    <div class="row displayRegNum">
+      <ul>
+        {{#each show}}
+        <li>{{reg_numbers}}</li>
+        {{/each}}
+      </ul>
     </div>
   </div>
