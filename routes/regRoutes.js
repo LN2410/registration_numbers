@@ -6,8 +6,8 @@ module.exports = function(reg){
         let show = await reg.getRegistration();
 
         res.render('index',{
-          townSelected,
-          show
+          show,
+          townSelected
         });
     } catch(err){
         console.error('unable to get home', err);
@@ -16,17 +16,18 @@ module.exports = function(reg){
 
   async function addRegistr(req, res) {
     try {
-      let regex = /^[a-zA-Z]{2,3}(\s)(?:([0-9]{3}[-][0-9]{2,3})|([0-9]{3,5}))$/;
+      //let regex = /^[a-zA-Z]{2,3}(\s)(?:([0-9]{3}[-][0-9]{2,3})|([0-9]{3,5}))$/;
 
-      let inputReg = req.body.enterReg.trim().toUpperCase();
+      let inputReg = req.body.enterReg
+      //.trim().toUpperCase();
 
       if (!inputReg && inputReg == '') {
         req.flash('error, Please enter a correct reg number')
         return res.redirect('/');
       } else {
-        if (inputReg.match(regex) !== undefined) {
+        if (inputReg !== undefined) {
           let theReg = await reg.addReg(inputReg)
-          if (theReg === 'correct') {
+          if (theReg === 'success') {
             let showReg = await reg.getRegistration();
             req.flash('success', 'Registration number added');
             res.render('index', {
@@ -48,11 +49,11 @@ module.exports = function(reg){
       getTown = req.body.townNames;
       let townSelected = await reg.allTowns(getTown);
       let showFiltered = await reg.filter(getTown);
-      townSelected = townSelected.map((ment) =>{
-        if (ment.town_start === getTown) {
-          ment['selected'] = 'selected';
+      townSelected = townSelected.map((moment) =>{
+        if (moment.town_start === getTown) {
+          moment['selected'] = 'selected';
         }
-        return ment;
+        return moment;
       });
 
       res.render('index', {

@@ -16,7 +16,13 @@
               me.value = me.value.replace(g, "");
             }
           </script>
+      </div>
+      </div>
+      <div class="row">
+        <div class="twelve columns">
+          <button class="addbtn" type="submit" name="addReg">Add Reg</button>
         </div>
+      </div>
     </form>
 
     <div class="message" style="color: #c0392b; font-size: 16px; font-weight: 300; text-align: center; margin-bottom: 10px">
@@ -48,13 +54,8 @@
   </div>
 </form>
     </div>
-    <form class="" action="/added" method="post">
-      <div class="row">
-        <div class="twelve columns">
-          <button class="addbtn" type="submit" name="addReg">Add Reg</button>
-          <a href="/delete" class="resetbtn" >Reset</a>
-        </div>
-      </div>
+    <form class="" action="/reset" method="post">
+    <a href="/delete" class="resetbtn" >Reset</a>
     </form>
 
     <div class="row displayRegNum">

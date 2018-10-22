@@ -1,5 +1,5 @@
 let express = require('express');
-let registrationNumbers = require('./registration');
+let RegistrationNumbers = require('./registration');
 // const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
@@ -36,13 +36,13 @@ app.use(express.static('public'));
 // initialise session middleware - flash-express depends on it
 
 //instance for factory functions
-let RegNumber = registrationNumbers(pool);
-let RegRoutes = Routes(reg);
+let regNumber = RegistrationNumbers(pool);
+let regRoutes = Routes(regNumber);
 //routes
-app.get('/', RegRoutes.homeRoute);
-app.get('/delete', RegRoutes.deletedReg);
-app.post('/registration', RegRoutes.addRegistr);
-app.post('/townSelect', RegRoutes.filtered);
+app.get('/', regRoutes.homeRoute);
+app.get('/delete', regRoutes.deletedReg);
+app.post('/registration', regRoutes.addRegistr);
+app.post('/townSelect', regRoutes.filtered);
 
 const PORT = process.env.PORT || 3020;
 
